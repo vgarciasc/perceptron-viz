@@ -1,0 +1,44 @@
+body {
+	font-family: Verdana;
+	font-size: 14px;
+	background: url("https://i.imgur.com/pxX5l5X.png");
+}
+
+#canvas-holder {
+	border: solid 1px black;
+	width: 660px;
+	height: 500px;
+	text-align: center;
+}
+
+.code-line {
+	padding: 5px;
+}
+
+.successful-code {
+	background-color: greenyellow;
+}
+
+.errorful-code {
+	background-color: darksalmon;
+}
+
+#canvas-holder {
+	background-color: white;
+}
+
+@media(min-width: 800px) {
+	#div-left {
+		float: left;
+		width: 500px;
+		padding: 0.5em;
+	}
+
+	#div-right {
+		float: left;
+	}
+
+	.mobile-only {
+		display: none;
+	}
+}
