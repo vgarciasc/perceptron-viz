@@ -7,6 +7,7 @@
 		<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 		<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 		<link rel="stylesheet" type="text/css" href="style.css">
+		<script async defer src="https://buttons.github.io/buttons.js"></script>
 		<script src="sketch.js"></script>
 		<meta charset="utf-8" />
 	    <script>
@@ -20,6 +21,9 @@
       	</script>
 	</head>
 	<body>
+		<div style="position: absolute; translate: 92vw;">
+			<a class="github-button" href="https://github.com/vgarciasc/perceptron-viz" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star vgarciasc/perceptron-viz on GitHub">Star</a>
+		</div>
 		<div style="width: 100%;">
 			<div id="div-left">
 				<div style="display: flex; line-height: 10px; background-color: lightgrey;">
@@ -30,24 +34,29 @@
 				<div class="mobile-only" style="color: red; font-size: 20px">
 					Please use a desktop to appropriately visualize this page.
 				</div>
+
 				<p><b>Perceptrons</b> are supervised learning models used to classify data into binary classes. They are one of the simplest models around, and thus serve as a good introduction to machine learning.</p>
 				<p>This page contains a running visualization of the Perceptron Learning Algorithm (PLA). First, a <font color=purple>target function</font> is generated randomly, and then, a set of <font color=red>o</font><font color=blue>b</font><font color=red>s</font><font color=blue>e</font><font color=red>r</font><font color=blue>v</font><font color=red>a</font><font color=blue>t</font><font color=red>i</font><font color=blue>o</font><font color=red>n</font><font color=blue>s</font> is uniformly generated to populate the dataset. The learning algorithm is executed according to the lines below.</p>
 				<hr>
 				<div>
 					Number of points: <input type="number" value=100 id="number_of_points"></input>
-					<button onclick="restart()">Reset</button>
 					<br>
+					<input type="checkbox" id="is_linearly_separable" checked> Generate linearly separable data
+					<br><br>
 					<button onclick="press_play();" id="play_btn">Play &gt;&gt;&gt;</button> <button onclick="update_step();">Step &gt;</button>
+					<button onclick="restart()">Reset</button>
 				</div>
 				<hr>
 				<div style="font-size: 16px">
 					<h3>Perceptron Learning Algorithm</h3>
+					<div id="code-line-0" class="code-line successful-code">0. Initialize \( \mathbf{w} \leftarrow \mathbf{0} \) </div>
 					<div id="code-line-1" class="code-line">1. While there are <font color=grey>misclassified points</font>:</div>
 					<div id="code-line-2" class="code-line">1.1. Pick a misclassified point <font color=green>\(\mathbf{x}_n\)</font></div>
 					<div id="code-line-3" class="code-line">1.2. Update weights: \( \mathbf{w} \leftarrow \mathbf{w} + y_n \mathbf{x}_n \)</div>
 				</div>
-			</div id="div-right">
-				<div style="float: left; width: 700px; margin: 2em;">
+			</div>
+			<div id="div-right">
+				<br><br>
 				<div id="canvas-holder"></div>
 			</div>
 		</div>

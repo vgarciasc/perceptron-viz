@@ -44,6 +44,13 @@ function initialize() {
   target_fn = [a, b];
 
   points.forEach((pt) => pt.y = (target_fn[0] * pt.x1 + target_fn[1] <= pt.x2) ? 1 : - 1);
+
+  if (!$("#is_linearly_separable").is(":checked")) {
+    for (var i = 0; i < 0.2 * points_qt; i++) {
+      var point = random(points);
+      point.y *= -1;
+    }
+  }
 }
 
 function restart() {
@@ -63,11 +70,11 @@ function draw() {
   translate(0, height);
   translate(40, -25);
   
+  draw_ui();
   draw_graph();
   draw_points();
   draw_perceptron(perceptron_weights);
   draw_target_fn(target_fn)
-  draw_ui();  
 
   pop();
   
@@ -84,6 +91,7 @@ function draw_graph() {
   // ticks
   for (let i = 0; i < TICKS_QT; i++) {
     var h_dist = (width * 0.95 / TICKS_QT) - (width * 0.95 / TICKS_QT) % 10;
+    strokeWeight(1);
     line(i * h_dist, -5, i * h_dist, 5);
     textAlign(LEFT, CENTER);
     text(i * h_dist, i * h_dist - 10, 15);
@@ -96,6 +104,7 @@ function draw_graph() {
 }
 
 function draw_points() {
+  push();
   // i know this is really ugly but don't want to mess with this now
   for (let i = 0; i < points.length; i++) {
     var point = points[i];
@@ -132,9 +141,11 @@ function draw_points() {
       pop()
     }
   }
+  pop();
 }
 
 function draw_perceptron(w) {
+  push();
   var f = ((x1) => - w[1]/w[2] * x1 - w[0]/w[2]);
   strokeWeight(3);
   var pad = 1;
@@ -147,9 +158,11 @@ function draw_perceptron(w) {
   
   stroke(color(180, 0, 0));
   line(-1 * GRAPH_W - pad * 2, -f(-1) * GRAPH_H - pad * 2, 1 * GRAPH_W - pad * 2, -f(1) * GRAPH_H - pad * 2)
+  pop();
 }
 
 function draw_target_fn(w) {
+  push();
   stroke('purple')
   strokeWeight(1);
   drawingContext.setLineDash([5, 5]);
@@ -158,17 +171,20 @@ function draw_target_fn(w) {
   line(0 * GRAPH_W, - f(0) * GRAPH_H, 1 * GRAPH_W, -f(1) * GRAPH_H)
   
   drawingContext.setLineDash([]);
+  pop();
 }
 
 function draw_ui() {
   let errors = get_misclassified_points(perceptron_weights, points).length;
 
+  push();
   fill("black");
   noStroke();
   textAlign(LEFT, TOP);
 
   text("iterations: " + iterations +  "\n    errors: " + errors,
     width * 0.8 - 30, - height * 0.9 - 20, 150, 50)
+  pop();
 }
 
 function update_step() {

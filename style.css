@@ -36,6 +36,8 @@ body {
 
 	#div-right {
 		float: left;
+		width: 700px;
+		margin: 2em;
 	}
 
 	.mobile-only {
