@@ -36,11 +36,79 @@ body {
 
 	#div-right {
 		float: left;
-		width: 700px;
 		margin: 2em;
+		font-family: MS Gothic, Courier;
+		padding: 1em;
+		border: solid 1px black;
+		background-color: white;
 	}
 
 	.mobile-only {
 		display: none;
 	}
+}
+
+.container {
+	/*border: solid 1px black;*/
+	display: flex;
+	height: 225px;
+}
+
+.bar {
+	background-color: lightblue; /*for html*/
+	fill: lightblue; /*for svg*/
+	stroke: black;
+}
+
+#tooltip {
+	background-color: black;
+	padding: 10px;
+	color: pink;
+	font-family: Courier;
+	position: absolute;
+}
+
+.hidden {
+	display: none;
+}
+
+.hovered {
+	opacity: 0.7;
+}
+
+.perceptron-container {
+	/*border: solid 1px black;*/
+}
+
+.data-point.positive {
+	fill: red;
+}
+
+.data-point.negative {
+	fill: blue;
+}
+
+.data-point.misclassified {
+	stroke: grey;
+	stroke-width: 2px;
+}
+
+.data-point.positive.selected, .data-point.negative.selected {
+	fill: lime;
+}
+
+.perceptron-line {
+	stroke: black;
+	stroke-width: 2px;
+}
+
+.target-fn-line {
+	stroke: purple;
+	stroke-width: 1px;
+	stroke-dasharray: 7;
+}
+
+.axis {
+	font-family: MS Gothic, Courier;
+	font-size: 14px;
 }
